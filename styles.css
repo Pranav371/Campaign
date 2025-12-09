@@ -1,0 +1,884 @@
+/* ========================================
+   SARPANCH ELECTION CAMPAIGN WEBSITE
+   Mobile-First Responsive Styles
+   Telugu Language Support
+   ======================================== */
+
+/* ========================================
+   CSS VARIABLES - Design Tokens
+   ======================================== */
+:root {
+    /* Primary Colors - Pink Theme */
+    --color-primary: #E91E63;        /* Vibrant Pink */
+    --color-primary-dark: #C2185B;   /* Deep Pink */
+    --color-primary-light: #F48FB1;  /* Light Pink */
+    
+    /* Accent Colors */
+    --color-accent: #880E4F;         /* Dark Magenta */
+    --color-accent-light: #AD1457;   /* Medium Magenta */
+    --color-symbol: #FFD700;         /* Golden - for symbol highlight */
+    
+    /* Neutral Colors */
+    --color-bg-light: #FFF5F8;       /* Soft pink-tinted background */
+    --color-bg-dark: #4A0E2B;        /* Dark burgundy */
+    --color-text-primary: #1A1A1A;
+    --color-text-secondary: #4A4A4A;
+    --color-text-muted: #6B6B6B;
+    --color-text-light: #FFFFFF;
+    
+    /* Functional Colors */
+    --color-success: #4CAF50;
+    --color-warning: #FF5722;
+    --color-pink-ballot: #E91E63;
+    --color-white-ballot: #FAFAFA;
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(233, 30, 99, 0.08);
+    --shadow-md: 0 4px 20px rgba(233, 30, 99, 0.12);
+    --shadow-lg: 0 8px 40px rgba(233, 30, 99, 0.18);
+    --shadow-glow: 0 0 30px rgba(233, 30, 99, 0.3);
+    
+    /* Typography */
+    --font-primary: 'Noto Sans Telugu', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 50%;
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.section-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Animation Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   SECTION 1: HERO
+   ======================================== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Symbol Container */
+.symbol-container {
+    margin-bottom: var(--spacing-xl);
+}
+
+.symbol-badge {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--spacing-md);
+    background: var(--glass-bg);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg), 0 0 60px rgba(218, 165, 32, 0.4);
+    animation: pulse 2s infinite;
+    border: 4px solid var(--color-symbol);
+}
+
+.symbol-icon {
+    font-size: 60px;
+}
+
+.symbol-label {
+    color: var(--color-text-light);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Candidate Photo */
+.candidate-photo {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto var(--spacing-xl);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 5px solid var(--color-text-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.candidate-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hero Title */
+.hero-title {
+    color: var(--color-text-light);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.candidate-name {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--color-symbol);
+    display: block;
+    margin: var(--spacing-sm) 0;
+}
+
+/* Ward Badge */
+.ward-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: var(--glass-bg);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.ward-number {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text-light);
+    font-size: var(--font-size-2xl);
+    animation: bounce 2s infinite;
+    opacity: 0.8;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+/* ========================================
+   SECTION 2: BIO VIDEO
+   ======================================== */
+.bio-section {
+    background: var(--color-bg-light);
+    padding: var(--spacing-3xl) 0;
+}
+
+.video-container {
+    margin-bottom: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--color-primary-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    background: var(--color-text-light);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-base);
+    margin-bottom: var(--spacing-md);
+}
+
+.video-placeholder:hover .play-button {
+    transform: scale(1.1);
+}
+
+.video-text {
+    color: var(--color-text-light);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+.bio-text {
+    text-align: center;
+}
+
+.bio-tagline {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.bio-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+/* ========================================
+   SECTION 3: MANIFESTO
+   ======================================== */
+.manifesto-section {
+    background: #FFF0F5;
+    padding: var(--spacing-3xl) 0;
+}
+
+.promises-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.promise-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--glass-border);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.promise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.promise-icon {
+    font-size: 50px;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.promise-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.promise-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* ========================================
+   SECTION 4: TEAM - Ward Members Supporting Sarpanch
+   ======================================== */
+.team-section {
+    background: #FFF0F5;
+    padding: var(--spacing-3xl) 0;
+}
+
+/* Sarpanch Reference Banner */
+.sarpanch-reference {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--color-primary);
+    border-radius: var(--radius-lg);
+    color: white;
+}
+
+.sarpanch-mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.sarpanch-mini-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-full);
+    border: 3px solid white;
+    overflow: hidden;
+}
+
+.sarpanch-mini-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sarpanch-mini-text {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+}
+
+.sarpanch-mini-name {
+    font-size: var(--font-size-lg);
+    font-weight: 800;
+    color: var(--color-symbol);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.team-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+/* Support Badge */
+.support-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+}
+
+.team-photo {
+    width: 80px;
+    height: 80px;
+    margin: var(--spacing-sm) auto var(--spacing-md);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+}
+
+.team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-info {
+    position: relative;
+}
+
+.team-name {
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+}
+
+.team-ward {
+    font-size: var(--font-size-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.team-symbol {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    font-size: 18px;
+    background: var(--color-symbol);
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid white;
+}
+
+/* ========================================
+   SECTION 5: VOTING GUIDE
+   ======================================== */
+.voting-section {
+    background: var(--color-primary-light);
+    padding: var(--spacing-3xl) 0;
+}
+
+.voting-section .section-title,
+.voting-section .section-subtitle {
+    color: var(--color-text-primary);
+}
+
+.info-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.info-box {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-md);
+}
+
+.info-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Date Box */
+.info-date {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-time {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+/* Ballot Box */
+.ballot-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.ballot-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.ballot-item.pink {
+    background: rgba(233, 30, 99, 0.1);
+    border: 2px solid var(--color-pink-ballot);
+}
+
+.ballot-item.white {
+    background: rgba(0, 0, 0, 0.03);
+    border: 2px solid #999;
+}
+
+.ballot-color {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.ballot-item.pink .ballot-color {
+    background: var(--color-pink-ballot);
+}
+
+.ballot-item.white .ballot-color {
+    background: var(--color-white-ballot);
+    border: 1px solid #ddd;
+}
+
+.ballot-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-primary);
+    text-align: left;
+}
+
+.ballot-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-warning);
+    font-weight: 600;
+}
+
+/* Docs Box */
+.docs-list {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.doc-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.doc-icon {
+    font-size: 30px;
+}
+
+.doc-item span:last-child {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.docs-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-success);
+    font-weight: 600;
+}
+
+/* ========================================
+   SECTION 6: FOOTER & CTA
+   ======================================== */
+.footer-section {
+    background: var(--color-primary);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    text-align: center;
+}
+
+.final-symbol {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.symbol-large {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto var(--spacing-lg);
+    background: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    box-shadow: var(--shadow-lg), 0 0 60px rgba(255,255,255,0.3);
+    animation: pulse 2s infinite;
+}
+
+.final-message {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.final-tagline {
+    font-size: var(--font-size-lg);
+    color: rgba(255,255,255,0.9);
+}
+
+/* WhatsApp Button */
+.share-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: #25D366;
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: 50px;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(37, 211, 102, 0.4);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg), 0 0 50px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-icon {
+    font-size: var(--font-size-2xl);
+}
+
+.share-note {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: rgba(255,255,255,0.8);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.footer-text {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-disclaimer {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.7);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-year {
+    font-size: var(--font-size-xs);
+    color: rgba(255,255,255,0.5);
+}
+
+/* ========================================
+   FLOATING WHATSAPP BUTTON
+   ======================================== */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    transition: transform var(--transition-base);
+    animation: pulse 2s infinite;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   RESPONSIVE - TABLET & DESKTOP
+   ======================================== */
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+    
+    .section-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .symbol-badge {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .symbol-icon {
+        font-size: 80px;
+    }
+    
+    .candidate-photo {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .candidate-name {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .promises-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .promise-card:last-child {
+        grid-column: span 2;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 800px;
+    }
+    
+    .info-boxes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .info-box {
+        flex: 1;
+        min-width: 250px;
+    }
+}
